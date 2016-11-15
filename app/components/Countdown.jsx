@@ -1,16 +1,19 @@
-var React = require('react');
-var Clock = require('Clock');
-var CountdownForm = require('CountdownForm');
-var Controls = require('Controls');
+import React, { Component } from 'react';
+import Clock from 'Clock';
+import CountdownForm from 'CountdownForm';
+import Controls from 'Controls';
 
-var Countdown = React.createClass({
-	getInitialState: function () {
-		return {
+var countdown_path = 'images/countdown.jpg';
+
+class Countdown extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			count: 0,
 			countdownStatus: 'stopped'
 		};
-	},
-	componentDidUpdate: function (prevProps, prevState) {
+	}
+	componentDidUpdate(prevProps, prevState) {
 		if (this.state.countdownStatus !== prevState.countdownStatus) {
 			switch (this.state.countdownStatus) {
 				case 'started':
@@ -24,12 +27,12 @@ var Countdown = React.createClass({
 					break;
 			}
 		}
-	},
-	componentWillUnmount: function () {
+	}
+	componentWillUnmount() {
 		clearInterval(this.timer);
 		this.timer = undefined;
-	},
-	startTimer: function () {
+	}
+	startTimer() {
 		this.timer = setInterval( () => {
 			var newCount = this.state.count - 1;
 			this.setState({
@@ -40,33 +43,33 @@ var Countdown = React.createClass({
 				this.setState({countdownStatus: 'stopped'});
 			}
 		}, 1000);
-	},
-	handleSetCountdown: function (seconds) {
+	}
+	handleSetCountdown(seconds) {
 		this.setState ({
 			count: seconds,
 			countdownStatus: 'started'
 		});
-	},
-	handleStatusChange: function (newStatus) {
+	}
+	handleStatusChange(newStatus) {
 		this.setState({countdownStatus: newStatus});
-	},	
-	render: function () {
+	}	
+	render() {
 		var {count, countdownStatus} = this.state;
 		var renderControlArea = () => {
 			if (countdownStatus !== 'stopped') {
-				return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange}/>
+				return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange.bind(this)}/>
 			} else {
-				return <CountdownForm onSetCountdown={this.handleSetCountdown}/>
+				return <CountdownForm onSetCountdown={this.handleSetCountdown.bind(this)}/>
 			}
 		};
 		return (
 			<div>
-				<h1 className="page-title">Countdown App</h1>
+				<h1 className="page-title"><img src={countdown_path} id="countdown" alt="countdown" /></h1>
    				<Clock totalSeconds={count}/>
    				{renderControlArea()}
    			</div>
 		);
 	}
-});
+}
 
-module.exports = Countdown;
+export default Countdown;

@@ -1,16 +1,18 @@
-var React = require('react');
-var Clock = require('Clock');
-//var CountdownForm = require('CountdownForm');
-var Controls = require('Controls');
+import React, { Component } from 'react';
+import Clock from 'Clock';
+import Controls from 'Controls';
 
-var Timer = React.createClass({
-	getInitialState: function () {
-		return {
+var timer_path = 'images/timer.jpg';
+
+class Timer extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
 			count: 0,
 			timerStatus: 'stopped'
 		};
-	},
-	componentDidUpdate: function (prevProps, prevState) {
+	}
+	componentDidUpdate(prevProps, prevState) {
 		if (this.state.timerStatus !== prevState.timerStatus) {
 			switch (this.state.timerStatus) {
 				case 'started':
@@ -24,31 +26,31 @@ var Timer = React.createClass({
 					break;
 			}
 		}
-	},
-	handleStart: function () {
+	}
+	handleStart() {
 		this.timer = setInterval( () => {
 			this.setState({
 				count: this.state.count + 1
 			});
 
 		}, 1000);
-	},
-	componentWillUnmount: function () {
+	}
+	componentWillUnmount() {
 		clearInterval(this.timer);
-	},
-	handleStatusChange: function (newTimerStatus) {
+	}
+	handleStatusChange(newTimerStatus) {
 		this.setState({timerStatus: newTimerStatus});
-	},	
-	render: function () {
+	}	
+	render() {
 		var {count, timerStatus} = this.state;
 		return (
 			<div>
-				<h1 className="page-title">Timer App</h1>
+				<h1 className="page-title"><img src={timer_path} id="timer" alt="timer" /></h1>
    				<Clock totalSeconds={count}/>
-   				<Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange}/>
+   				<Controls countdownStatus={timerStatus} onStatusChange={this.handleStatusChange.bind(this)}/>
    			</div>
 		);
 	}
-});
+}
 
-module.exports = Timer;
+export default Timer;

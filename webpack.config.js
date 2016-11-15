@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+// var path = require('path'); if using sass need to include this variable
 
 module.exports = {
 	entry: [
@@ -22,14 +23,15 @@ module.exports = {
 	resolve: {
 		root: __dirname,
 		alias: {
+			Routes: 'app/routes.jsx',
 			Main: 'app/components/Main.jsx',
-			applicationStyles: 'app/styles/app.css',
 			Navigation: 'app/components/Navigation.jsx',
 			Timer: 'app/components/Timer.jsx',
 			Countdown: 'app/components/Countdown.jsx',
 			Clock: 'app/components/Clock.jsx',
 			CountdownForm: 'app/components/CountdownForm.jsx',
-			Controls: 'app/components/Controls.jsx'					
+			Controls: 'app/components/Controls.jsx',
+			applicationStyles: 'app/styles/app.css'
 		},
 		extensions: ['', '.js', '.jsx']
 	},
@@ -45,5 +47,11 @@ module.exports = {
 			}
 		]
 	},
+	/* if using sass need to include loader
+	sassLoader: {
+		includePaths: [
+			path.resolve(__dirname, './node_modules/foundation-sites/scss')
+		]
+	}*/
 	devtool: 'cheap-module-eval-source-map'
 };
