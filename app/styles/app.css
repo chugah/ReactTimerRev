@@ -90,7 +90,6 @@ Clock Component
     height: 90%;
     border-radius: 100%;
     background: radial-gradient(circle at top, white, rgba(255, 255, 255, 0) 58%);
-    -webkit-filter: blur(5px);
     filter: blur(5px);
     z-index: 2; 
 }
@@ -104,10 +103,8 @@ Clock Component
     width: 80%;
     height: 80%;
     border-radius: 100%;
-    -webkit-filter: blur(1px);
     filter: blur(1px);
     z-index: 2;
-    -webkit-transform: rotateZ(-30deg);
     transform: rotateZ(-30deg); 
 }
 
@@ -116,7 +113,6 @@ Clock Component
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-    -webkit-transform: rotateX(90deg) translateZ(-160px);
     transform: rotateX(90deg) translateZ(-160px);
     z-index: 1; 
 }
@@ -131,7 +127,6 @@ Clock Component
   
 .ball.bubble {
     background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));
-    -webkit-animation: bubble-anim 2s ease-out infinite;
     animation: bubble-anim 2s ease-out infinite; 
 }
     
@@ -141,7 +136,6 @@ Clock Component
      height: 80%;
      width: 40%;
      background: radial-gradient(circle at 130% 130%, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 0) 100%);
-     -webkit-transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg);
      transform: translateX(131%) translateY(58%) rotateZ(168deg) rotateX(10deg); 
  }
     
@@ -242,15 +236,7 @@ Clock Component
 }
 
 /* ==================================== 
-Countdown Component
-==================================== */
-
-#countdown {
-	margin-top: -1.5rem;
-}
-
-/* ==================================== 
-Controls Component
+Clock Controls Component
 ==================================== */
 
 .control-button {
@@ -280,9 +266,105 @@ Controls Component
 }
 
 #start {
-  color: #32CD32;
+  color: #55FF55;
 }
 
+/* ==================================== 
+Countdown Component
+==================================== */
 
+#countdown {
+  margin-top: -1.5rem;
+}
 
+.countdown form {
+  display: inline-block;
+  font-size: 0px;
+  margin: 50px auto 0;
+  position: relative;
+  z-index: 1;
+  background: #000000;
+  border: 17px dotted #ffffff;
+  text-shadow: 0px -1px 1px #222222;
+  box-shadow: 2px 2px 5px #000000;
+  border-radius: 10px 10px 10px 10px;
+  width: 24rem;
+  height: 7rem;
+  padding: 1.2rem;
+}
 
+.countdown input {
+  background: #222; 
+  background: linear-gradient(#333, #222);  
+  border: 1px solid #444;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 2px 0 #000;
+  color: #888;
+  display: block;
+  float: left;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: 40px;
+  margin-left: 15px;
+  padding: 0 10px;
+  text-shadow: 0 -1px 0 #000;
+  width: 200px;
+}
+
+.countdown input:focus {
+  animation: glow 800ms ease-out infinite alternate;
+  background: #222922;
+  background: linear-gradient(#333933, #222922);
+  border-color: #393;
+  box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+  color: #efe;
+  outline: none;
+}
+
+.countdown button {
+  background: #222;
+  background: linear-gradient(#333, #222);
+  box-sizing: content-box;
+  border: 1px solid #444;
+  border-left-color: #000;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 2px 0 #000;
+  color: #fff;
+  display: block;
+  float: left;
+  font-size: 0.9rem;
+  font-weight: 400;
+  height: 38px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+  width: 80px;
+} 
+
+.countdown button:hover,
+.countdown button:focus {
+  background: #292929;
+  background: linear-gradient(#393939, #292929);
+  color: #55FF55;
+  outline: none;
+}
+
+.countdown button:active {
+  background: #292929;
+  background: linear-gradient(#393939, #292929);
+  box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+  top: 1px;
+}
+
+@keyframes glow {
+    0% {
+    border-color: #393;
+    box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
+    } 
+    100% {
+    border-color: #6f6;
+    box-shadow: 0 0 20px rgba(0,255,0,.6), inset 0 0 10px rgba(0,255,0,.4), 0 2px 0 #000;
+    }
+}
