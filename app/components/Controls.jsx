@@ -10,15 +10,15 @@ class Controls extends Component {
 		var {countdownStatus, timerStatus} = this.props;
 		var renderStartStopButton = () => {
 			if (countdownStatus === 'started') {
-				return <button className="button secondary" onClick={this.onStatusChange('paused')}>Pause</button>
+				return <button className="control-button" id="pause" onClick={this.onStatusChange('paused')}>PAUSE</button>
 			} else {
-				return <button className="button primary" onClick={this.onStatusChange('started')}>Start</button>
+				return <button className="control-button" id="start" onClick={this.onStatusChange('started')}>START</button>
 			}
 		};
 		return (
 			<div className="controls">
 				{renderStartStopButton()}
-				<button className="button alert hollow" onClick={this.onStatusChange('stopped')}>Clear</button>
+				<button className="control-button" id="reset" onClick={this.onStatusChange('stopped')}>RESET</button>	
 			</div>
 		);
 	}
