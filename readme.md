@@ -15,5 +15,5 @@ This App has the following characteristics:
 	1. React framework
 	2. Foundation
 	3. CSS 3D
-	4. CSS transitions 
+	4. CSS animation 
 	5. Provides timer & countdown functionality
