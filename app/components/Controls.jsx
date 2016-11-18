@@ -6,18 +6,19 @@ class Controls extends Component {
 			this.props.onStatusChange(newStatus);
 		}
 	}
+	renderStartStopButton() {
+		var { countdownStatus, timerStatus } = this.props;
+		if (countdownStatus === 'started') {
+			return <button className="control-button" id="pause" onClick={this.onStatusChange('paused')}>PAUSE</button>
+		} else {
+			return <button className="control-button" id="start" onClick={this.onStatusChange('started')}>START</button>
+		}
+	}
 	render() {
-		var {countdownStatus, timerStatus} = this.props;
-		var renderStartStopButton = () => {
-			if (countdownStatus === 'started') {
-				return <button className="control-button" id="pause" onClick={this.onStatusChange('paused')}>PAUSE</button>
-			} else {
-				return <button className="control-button" id="start" onClick={this.onStatusChange('started')}>START</button>
-			}
-		};
+		//var {countdownStatus, timerStatus} = this.props;
 		return (
 			<div className="controls">
-				{renderStartStopButton()}
+				{this.renderStartStopButton()}
 				<button className="control-button" id="reset" onClick={this.onStatusChange('stopped')}>RESET</button>	
 			</div>
 		);
