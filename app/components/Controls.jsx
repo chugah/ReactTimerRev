@@ -15,7 +15,6 @@ class Controls extends Component {
 		}
 	}
 	render() {
-		//var {countdownStatus, timerStatus} = this.props;
 		return (
 			<div className="controls">
 				{this.renderStartStopButton()}
