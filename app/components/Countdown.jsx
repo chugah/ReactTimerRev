@@ -52,21 +52,22 @@ class Countdown extends Component {
 	}
 	handleStatusChange(newStatus) {
 		this.setState({countdownStatus: newStatus});
-	}	
-	render() {
-		var {count, countdownStatus} = this.state;
-		var renderControlArea = () => {
-			if (countdownStatus !== 'stopped') {
+	}
+	renderControlArea() {
+		var { countdownStatus } = this.state;
+		if (countdownStatus !== 'stopped') {
 				return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange.bind(this)}/>
 			} else {
 				return <CountdownForm onSetCountdown={this.handleSetCountdown.bind(this)}/>
 			}
-		};
+	}	
+	render() {
+		var { count } = this.state;
 		return (
 			<div>
 				<h1 className="page-title"><img src={countdown_path} id="countdown" alt="countdown" /></h1>
    				<Clock totalSeconds={count}/>
-   				{renderControlArea()}
+   				{this.renderControlArea()}
    			</div>
 		);
 	}
