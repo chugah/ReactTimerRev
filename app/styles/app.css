@@ -283,7 +283,6 @@ Countdown Component
   margin: 50px auto 0;
   position: relative;
   z-index: 1;
-  background: #000000;
   border: 17px dotted #ffffff;
   text-shadow: 0px -1px 1px #222222;
   box-shadow: 2px 2px 5px #000000;
@@ -294,8 +293,6 @@ Countdown Component
 }
 
 .countdown input {
-  background: #222; 
-  background: linear-gradient(#333, #222);  
   border: 1px solid #444;
   border-radius: 5px 0 0 5px;
   box-shadow: 0 2px 0 #000;
@@ -322,8 +319,7 @@ Countdown Component
 }
 
 .countdown button {
-  background: #222;
-  background: linear-gradient(#333, #222);
+  background: #FFF;
   box-sizing: content-box;
   border: 1px solid #444;
   border-left-color: #000;
